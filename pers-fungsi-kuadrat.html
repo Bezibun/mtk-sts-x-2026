@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buku: Persamaan & Fungsi Kuadrat</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Lora for Serif (Book feel), Inter for sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- MathJax for rendering math formulas -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+        };
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Lora', 'serif'],
+                    },
+                    colors: {
+                        bookBlue: '#1e3a8a', // blue-900
+                        bookAccent: '#3b82f6', // blue-500
+                        paper: '#fdfbf7', // slightly off-white like paper
+                        ink: '#1e293b', // slate-800
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #e2e8f0; } /* Meja background */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #cbd5e1; }
+        ::-webkit-scrollbar-thumb { background: #64748b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        
+        .math-block { overflow-x: auto; padding: 12px 0; }
+        .chapter-title { position: relative; display: inline-block; padding-bottom: 0.5rem; }
+        .chapter-title::after { content: ''; position: absolute; left: 0; bottom: 0; width: 60px; height: 4px; background-color: #3b82f6; }
+    </style>
+</head>
+<body class="text-ink font-sans antialiased py-6 md:py-12">
+
+    <!-- BOOK CONTAINER -->
+    <main class="max-w-4xl mx-auto bg-paper shadow-2xl border-l-[16px] border-bookBlue rounded-r-xl overflow-hidden relative">
+        
+        <!-- PITA PEMBATAS BUKU (Aesthetic) -->
+        <div class="absolute top-0 right-12 w-8 h-24 bg-red-600 shadow-md transform -translate-y-2 rounded-b-sm z-0"></div>
+
+        <div class="p-8 md:p-16 relative z-10">
+            
+            <!-- COVER PAGING (HEADER BUKU) -->
+            <div class="text-center mb-16 mt-8 border-b-2 border-slate-200 pb-12">
+                <p class="text-bookAccent font-bold tracking-widest uppercase text-sm mb-4">Seri Buku Referensi Matematika</p>
+                <h1 class="text-4xl md:text-5xl font-serif font-bold text-bookBlue leading-tight mb-6">Persamaan & <br>Fungsi Kuadrat</h1>
+                <p class="text-lg text-slate-600 italic font-serif">Kupas Tuntas Konsep, Analisis Grafik, dan Pemecahan Masalah</p>
+            </div>
+
+            <!-- DAFTAR ISI -->
+            <div class="bg-slate-50 p-6 rounded-lg border border-slate-200 mb-16">
+                <h2 class="font-serif text-xl font-bold mb-4 text-bookBlue border-b border-slate-300 pb-2">Daftar Isi</h2>
+                <ul class="space-y-3 font-semibold text-slate-700">
+                    <li class="flex justify-between hover:text-bookAccent transition"><a href="#bab1">Bab 1. Persamaan Kuadrat</a> <span class="text-slate-400 font-normal">Hal 1</span></li>
+                    <li class="flex justify-between hover:text-bookAccent transition"><a href="#bab2">Bab 2. Fungsi Kuadrat</a> <span class="text-slate-400 font-normal">Hal 3</span></li>
+                    <li class="flex justify-between hover:text-bookAccent transition"><a href="#bab3">Bab 3. Kumpulan Soal & Pembahasan Lengkap</a> <span class="text-slate-400 font-normal">Hal 6</span></li>
+                </ul>
+            </div>
+
+            <!-- ================= BAB 1 ================= -->
+            <section id="bab1" class="mb-20 scroll-mt-10">
+                <div class="mb-8">
+                    <span class="text-bookAccent font-bold tracking-wider uppercase text-sm">Bab 1</span>
+                    <h2 class="text-3xl font-serif font-bold text-bookBlue chapter-title mt-1">Persamaan Kuadrat</h2>
+                </div>
+
+                <div class="space-y-6 text-slate-700 leading-relaxed text-justify">
+                    <p>Dalam matematika, <b>Persamaan Kuadrat</b> adalah salah satu pondasi penting dalam aljabar. Persamaan ini merupakan persamaan polinomial (suku banyak) dengan variabel yang memiliki pangkat tertinggi dua.</p>
+                    
+                    <h3 class="font-serif text-xl font-bold text-ink mt-8">1.1 Bentuk Umum</h3>
+                    <p>Persamaan kuadrat selalu dapat disederhanakan ke dalam bentuk umum yang standar. Bentuk bakunya dituliskan sebagai:</p>
+                    <div class="bg-blue-50 text-center py-5 rounded-lg my-4 border border-blue-100 shadow-inner">
+                        <span class="text-2xl font-bold text-bookBlue">$$ax^2 + bx + c = 0$$</span>
+                    </div>
+                    <p>Dengan syarat mutlak: $a, b, c$ adalah anggota bilangan real, dan nilai $a$ <b>tidak boleh sama dengan nol</b> ($a \neq 0$). Angka $a$ disebut koefisien kuadrat, $b$ adalah koefisien linear, dan $c$ adalah konstanta bebas.</p>
+
+                    <h3 class="font-serif text-xl font-bold text-ink mt-8">1.2 Diskriminan dan Jenis Akar</h3>
+                    <p>Sebuah persamaan kuadrat umumnya memiliki dua buah "akar" atau penyelesaian (nilai $x$ yang memenuhi persamaan). Untuk mengetahui karakteristik dari akar-akar tersebut tanpa harus menghitung nilainya, matematikawan menggunakan nilai <b>Diskriminan ($D$)</b>.</p>
+                    <div class="bg-slate-100 text-center py-4 rounded-lg my-4 font-mono font-bold text-lg">
+                        $$D = b^2 - 4ac$$
+                    </div>
+                    <p>Nilai D ini menentukan "nasib" dari akar persamaan tersebut:</p>
+                    <ul class="list-disc list-outside pl-6 space-y-2 mt-2">
+                        <li>Jika <b class="text-green-600">D > 0</b>, persamaan memiliki <b>dua akar real yang berbeda</b>. Grafik fungsinya akan memotong sumbu X di dua titik berbeda.</li>
+                        <li>Jika <b class="text-blue-600">D = 0</b>, persamaan memiliki <b>dua akar real yang kembar (sama)</b>. Grafik fungsinya hanya menyinggung sumbu X di satu titik.</li>
+                        <li>Jika <b class="text-red-600">D < 0</b>, persamaan <b>tidak memiliki akar real</b> (akarnya berupa bilangan imajiner/kompleks). Grafik fungsinya mengambang dan tidak menyentuh sumbu X sama sekali.</li>
+                    </ul>
+
+                    <h3 class="font-serif text-xl font-bold text-ink mt-8">1.3 Menyusun Persamaan Kuadrat Baru</h3>
+                    <p>Terkadang kita dihadapkan pada masalah kebalikan: kita mengetahui akar-akarnya, tetapi tidak tahu persamaannya. Jika akar-akarnya diketahui sebagai $x_1$ dan $x_2$, kita dapat merekonstruksi persamaan tersebut dengan rumus:</p>
+                    <div class="bg-blue-50 text-center py-4 rounded-lg my-4 border border-blue-100">
+                        <span class="text-xl font-bold text-bookBlue">$$(x - x_1)(x - x_2) = 0$$</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= BAB 2 ================= -->
+            <section id="bab2" class="mb-20 scroll-mt-10">
+                <div class="mb-8">
+                    <span class="text-bookAccent font-bold tracking-wider uppercase text-sm">Bab 2</span>
+                    <h2 class="text-3xl font-serif font-bold text-bookBlue chapter-title mt-1">Fungsi Kuadrat</h2>
+                </div>
+
+                <div class="space-y-6 text-slate-700 leading-relaxed text-justify">
+                    <p>Jika persamaan kuadrat sama dengan nol, maka <b>Fungsi Kuadrat</b> adalah pemetaan nilai $x$ ke sebuah nilai $y$ atau $f(x)$. Bentuk umumnya adalah $f(x) = ax^2 + bx + c$. Keistimewaan dari fungsi ini terletak pada bentuk grafiknya yang melengkung indah, yang dikenal dengan nama <b>Parabola</b>.</p>
+
+                    <h3 class="font-serif text-xl font-bold text-ink mt-8">2.1 Karakteristik Parabola</h3>
+                    <p>Bentuk parabola sangat dipengaruhi oleh koefisien $a$ (angka yang menempel pada $x^2$):</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+                        <div class="border-2 border-slate-200 p-4 rounded-lg flex gap-4 items-center bg-white">
+                            <div class="bg-bookBlue text-white text-xl font-bold w-12 h-12 flex items-center justify-center rounded-full shrink-0">a>0</div>
+                            <p class="text-sm">Parabola akan <b>terbuka ke atas</b> membentuk huruf 'U'. Ia akan memiliki titik terendah (Nilai Minimum).</p>
+                        </div>
+                        <div class="border-2 border-slate-200 p-4 rounded-lg flex gap-4 items-center bg-white">
+                            <div class="bg-red-500 text-white text-xl font-bold w-12 h-12 flex items-center justify-center rounded-full shrink-0">a<0</div>
+                            <p class="text-sm">Parabola akan <b>terbuka ke bawah</b>. Ia akan membentuk bukit dan memiliki titik tertinggi (Nilai Maksimum).</p>
+                        </div>
+                    </div>
+
+                    <h3 class="font-serif text-xl font-bold text-ink mt-8">2.2 Menemukan Titik Puncak (Titik Balik)</h3>
+                    <p>Titik puncak (puncak gunung atau dasar lembah) adalah koordinat paling penting dalam parabola. Koordinat titik puncak $(x_p, y_p)$ dapat dihitung dengan tepat menggunakan rumus turunan aljabar berikut:</p>
+                    
+                    <div class="bg-slate-100 p-6 rounded-lg my-4 space-y-4 shadow-sm border border-slate-200">
+                        <div>
+                            <p class="font-bold text-bookBlue mb-1">1. Sumbu Simetri ($x_p$):</p>
+                            <p class="text-sm mb-2">Ini adalah garis tengah yang membelah parabola menjadi dua bagian simetris. Rumusnya:</p>
+                            <div class="text-center font-bold text-lg">$$x_p = \frac{-b}{2a}$$</div>
+                        </div>
+                        <hr class="border-slate-300">
+                        <div>
+                            <p class="font-bold text-bookBlue mb-1">2. Nilai Optimum / Maksimum / Minimum ($y_p$):</p>
+                            <p class="text-sm mb-2">Ini adalah ketinggian atau kedalaman maksimal parabola.</p>
+                            <div class="text-center font-bold text-lg">$$y_p = \frac{-D}{4a} = \frac{-(b^2 - 4ac)}{4a}$$</div>
+                            <p class="text-sm text-slate-500 text-center mt-2 italic">*Tips: Nilai $y_p$ juga bisa dicari dengan memasukkan nilai $x_p$ ke dalam fungsi awal $f(x_p)$.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= BAB 3 ================= -->
+            <section id="bab3" class="mb-10 scroll-mt-10">
+                <div class="mb-8">
+                    <span class="text-bookAccent font-bold tracking-wider uppercase text-sm">Bab 3</span>
+                    <h2 class="text-3xl font-serif font-bold text-bookBlue chapter-title mt-1">Kumpulan Soal & Pembahasan</h2>
+                </div>
+                
+                <p class="text-slate-600 mb-8 italic border-l-4 border-bookAccent pl-4 bg-blue-50 py-2">
+                    Berikut adalah kompilasi soal-soal latihan yang sering muncul di ujian. 
+                    Klik tombol <b>"Lihat Pembahasan"</b> untuk mempelajari langkah penyelesaiannya secara bertahap.
+                </p>
+
+                <div class="space-y-8">
+
+                    <!-- Soal 1 -->
+                    <div class="border border-slate-300 rounded-lg overflow-hidden bg-white shadow-sm">
+                        <div class="bg-slate-100 px-6 py-3 border-b border-slate-300 flex justify-between items-center">
+                            <span class="font-bold text-bookBlue font-serif">Soal Latihan 1</span>
+                            <span class="text-xs bg-bookBlue text-white px-2 py-1 rounded">Menyusun PK</span>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-lg text-ink mb-4">Bentuk umum persamaan kuadrat yang akar-akarnya $3$ dan $-5$ adalah...</p>
+                            <button onclick="toggleJawaban('ans1')" class="text-sm font-bold border-2 border-bookAccent text-bookAccent px-4 py-2 rounded hover:bg-bookAccent hover:text-white transition">Lihat Pembahasan</button>
+                            
+                            <div id="ans1" class="hidden mt-6 pt-6 border-t border-dashed border-slate-300">
+                                <p class="mb-2 font-bold text-slate-700">Penyelesaian:</p>
+                                <p class="mb-2">Diketahui akar-akarnya: $x_1 = 3$ dan $x_2 = -5$.</p>
+                                <p class="mb-2">Gunakan rumus perkalian faktor:</p>
+                                <div class="math-block bg-slate-50 p-4 rounded text-center text-lg">
+                                    $$(x - x_1)(x - x_2) = 0$$
+                                    $$(x - 3)(x - (-5)) = 0$$
+                                    $$(x - 3)(x + 5) = 0$$
+                                </div>
+                                <p class="my-2">Lakukan perkalian distributif (pelangi):</p>
+                                <div class="math-block bg-slate-50 p-4 rounded text-center text-lg">
+                                    $$x(x) + x(5) - 3(x) - 3(5) = 0$$
+                                    $$x^2 + 5x - 3x - 15 = 0$$
+                                    <span class="font-bold text-bookBlue">$$x^2 + 2x - 15 = 0$$</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soal 2 -->
+                    <div class="border border-slate-300 rounded-lg overflow-hidden bg-white shadow-sm">
+                        <div class="bg-slate-100 px-6 py-3 border-b border-slate-300 flex justify-between items-center">
+                            <span class="font-bold text-bookBlue font-serif">Soal Latihan 2</span>
+                            <span class="text-xs bg-bookBlue text-white px-2 py-1 rounded">Mencari Akar</span>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-lg text-ink mb-4">Akar-akar dari persamaan kuadrat $x^2 - 5x + 6 = 0$ adalah...</p>
+                            <button onclick="toggleJawaban('ans2')" class="text-sm font-bold border-2 border-bookAccent text-bookAccent px-4 py-2 rounded hover:bg-bookAccent hover:text-white transition">Lihat Pembahasan</button>
+                            
+                            <div id="ans2" class="hidden mt-6 pt-6 border-t border-dashed border-slate-300">
+                                <p class="mb-2 font-bold text-slate-700">Penyelesaian (Metode Pemfaktoran):</p>
+                                <p class="mb-2">Kita mencari dua angka yang jika ditambahkan hasilnya $b (-5)$ dan jika dikalikan hasilnya $c (6)$.</p>
+                                <ul class="list-disc ml-6 mb-4 text-slate-600">
+                                    <li>Angka yang memenuhi adalah $-2$ dan $-3$.</li>
+                                    <li>Karena $(-2) + (-3) = -5$</li>
+                                    <li>Dan $(-2) \times (-3) = 6$</li>
+                                </ul>
+                                <p class="mb-2">Masukkan ke dalam bentuk pemfaktoran:</p>
+                                <div class="math-block bg-slate-50 p-4 rounded text-center text-lg">
+                                    $$(x - 2)(x - 3) = 0$$
+                                </div>
+                                <p class="mb-2 mt-4">Pembuat nol:</p>
+                                <div class="math-block bg-blue-50 p-4 rounded text-center font-bold">
+                                    $$x - 2 = 0 \Rightarrow x_1 = 2$$
+                                    $$x - 3 = 0 \Rightarrow x_2 = 3$$
+                                </div>
+                                <p class="mt-4 font-bold">Jadi, akar-akarnya adalah 2 dan 3.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soal 3 -->
+                    <div class="border border-slate-300 rounded-lg overflow-hidden bg-white shadow-sm">
+                        <div class="bg-slate-100 px-6 py-3 border-b border-slate-300 flex justify-between items-center">
+                            <span class="font-bold text-bookBlue font-serif">Soal Latihan 3</span>
+                            <span class="text-xs bg-bookBlue text-white px-2 py-1 rounded">Diskriminan</span>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-lg text-ink mb-4">Jenis akar dari persamaan kuadrat $4x^2 - 4x + 1 = 0$ adalah ...</p>
+                            <button onclick="toggleJawaban('ans3')" class="text-sm font-bold border-2 border-bookAccent text-bookAccent px-4 py-2 rounded hover:bg-bookAccent hover:text-white transition">Lihat Pembahasan</button>
+                            
+                            <div id="ans3" class="hidden mt-6 pt-6 border-t border-dashed border-slate-300">
+                                <p class="mb-2 font-bold text-slate-700">Penyelesaian:</p>
+                                <p class="mb-2">Identifikasi nilai a, b, dan c dari $4x^2 - 4x + 1 = 0$:</p>
+                                <p class="mb-4 bg-slate-50 p-2 inline-block rounded font-mono">$a = 4, b = -4, c = 1$</p>
+                                <p class="mb-2">Gunakan rumus Diskriminan ($D = b^2 - 4ac$):</p>
+                                <div class="math-block bg-slate-50 p-4 rounded text-center text-lg">
+                                    $$D = (-4)^2 - 4(4)(1)$$
+                                    $$D = 16 - 16$$
+                                    $$D = 0$$
+                                </div>
+                                <div class="mt-4 bg-green-50 p-4 rounded border-l-4 border-green-500">
+                                    <p class="font-bold text-green-800">Kesimpulan:</p>
+                                    <p>Karena nilai $D = 0$, maka persamaan kuadrat tersebut memiliki <b>dua akar real yang kembar (sama)</b>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soal 4 -->
+                    <div class="border border-slate-300 rounded-lg overflow-hidden bg-white shadow-sm">
+                        <div class="bg-slate-100 px-6 py-3 border-b border-slate-300 flex justify-between items-center">
+                            <span class="font-bold text-bookBlue font-serif">Soal Latihan 4</span>
+                            <span class="text-xs bg-purple-600 text-white px-2 py-1 rounded">Titik Puncak</span>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-lg text-ink mb-4">Titik puncak dari fungsi kuadrat $y = f(x) = x^2 - 4x + 3$ adalah...</p>
+                            <button onclick="toggleJawaban('ans4')" class="text-sm font-bold border-2 border-bookAccent text-bookAccent px-4 py-2 rounded hover:bg-bookAccent hover:text-white transition">Lihat Pembahasan</button>
+                            
+                            <div id="ans4" class="hidden mt-6 pt-6 border-t border-dashed border-slate-300">
+                                <p class="mb-2 font-bold text-slate-700">Penyelesaian:</p>
+                                <p class="mb-2">Diketahui $a = 1, b = -4, c = 3$.</p>
+                                <p class="mb-2 font-semibold mt-4">Langkah 1: Cari absis ($x_p$)</p>
+                                <div class="math-block bg-slate-50 p-4 rounded text-center text-lg">
+                                    $$x_p = \frac{-b}{2a} = \frac{-(-4)}{2(1)} = \frac{4}{2} = 2$$
+                                </div>
+                                <p class="mb-2 font-semibold mt-4">Langkah 2: Cari ordinat ($y_p$) dengan substitusi $x_p$ ke fungsi awal</p>
+                                <div class="math-block bg-slate-50 p-4 rounded text-center text-lg">
+                                    $$y_p = (2)^2 - 4(2) + 3$$
+                                    $$y_p = 4 - 8 + 3$$
+                                    $$y_p = -1$$
+                                </div>
+                                <div class="mt-4 bg-blue-50 p-4 rounded text-center font-bold text-lg text-bookBlue">
+                                    Jadi, Koordinat Titik Puncaknya adalah $(2, -1)$
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soal 5 -->
+                    <div class="border border-slate-300 rounded-lg overflow-hidden bg-white shadow-sm border-l-4 border-l-yellow-500">
+                        <div class="bg-slate-100 px-6 py-3 border-b border-slate-300 flex justify-between items-center">
+                            <span class="font-bold text-bookBlue font-serif">Soal Latihan 5 (Pemodelan)</span>
+                            <span class="text-xs bg-yellow-500 text-white px-2 py-1 rounded">Aplikasi Fungsi</span>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-lg text-ink mb-4">Diketahui sebuah kado yang berbentuk balok. Panjang kado tersebut 5 cm lebih panjang dari lebarnya. Sementara itu, tinggi kadonya adalah 20 cm. Jika $x$ menyatakan ukuran lebar kado, fungsi kuadrat yang mewakili volumenya adalah...</p>
+                            <button onclick="toggleJawaban('ans5')" class="text-sm font-bold border-2 border-bookAccent text-bookAccent px-4 py-2 rounded hover:bg-bookAccent hover:text-white transition">Lihat Pembahasan</button>
+                            
+                            <div id="ans5" class="hidden mt-6 pt-6 border-t border-dashed border-slate-300">
+                                <p class="mb-2 font-bold text-slate-700">Penyelesaian:</p>
+                                <p class="mb-2">Dari soal cerita, kita susun model matematikanya:</p>
+                                <ul class="list-none space-y-2 mb-4 bg-slate-50 p-4 rounded border border-slate-200">
+                                    <li><b>Lebar ($l$)</b> = $x$</li>
+                                    <li><b>Panjang ($p$)</b> = $x + 5$ <i>(karena 5 cm lebih panjang dari lebarnya)</i></li>
+                                    <li><b>Tinggi ($t$)</b> = $20$</li>
+                                </ul>
+                                <p class="mb-2">Rumus Volume Balok adalah $V = p \times l \times t$. Kita substitusikan nilai di atas:</p>
+                                <div class="math-block bg-slate-50 p-4 rounded text-center text-lg">
+                                    $$V(x) = (x + 5) \cdot (x) \cdot (20)$$
+                                    $$V(x) = x(x + 5) \cdot 20$$
+                                    $$V(x) = (x^2 + 5x) \cdot 20$$
+                                    <span class="font-bold text-bookBlue">$$V(x) = 20x^2 + 100x$$</span>
+                                </div>
+                                <p class="mt-4">Jadi, fungsi kuadrat untuk volumenya adalah $V(x) = 20x^2 + 100x$.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soal 6 -->
+                    <div class="border border-slate-300 rounded-lg overflow-hidden bg-white shadow-sm border-l-4 border-l-yellow-500">
+                        <div class="bg-slate-100 px-6 py-3 border-b border-slate-300 flex justify-between items-center">
+                            <span class="font-bold text-bookBlue font-serif">Soal Latihan 6 (Nilai Maksimum)</span>
+                            <span class="text-xs bg-yellow-500 text-white px-2 py-1 rounded">Aplikasi Fungsi</span>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-lg text-ink mb-4">Sebuah peluru ditembakkan ke atas dengan ketinggian (dalam meter) setelah $t$ detik dinyatakan oleh $h(t) = 40t - 5t^2$. Ketinggian maksimum yang dapat dicapai peluru tersebut adalah ...</p>
+                            <button onclick="toggleJawaban('ans6')" class="text-sm font-bold border-2 border-bookAccent text-bookAccent px-4 py-2 rounded hover:bg-bookAccent hover:text-white transition">Lihat Pembahasan</button>
+                            
+                            <div id="ans6" class="hidden mt-6 pt-6 border-t border-dashed border-slate-300">
+                                <p class="mb-2 font-bold text-slate-700">Penyelesaian:</p>
+                                <p class="mb-2">Fungsi $h(t) = -5t^2 + 40t$. Maka $a = -5, b = 40, c = 0$.</p>
+                                <p class="mb-2 text-slate-600 italic">"Ketinggian maksimum" dalam grafik parabola adalah sama dengan mencari ordinat titik puncak ($y_p$).</p>
+                                
+                                <p class="mb-2 font-semibold mt-4">Cara Termudah: Cari dulu waktu saat peluru mencapai puncak ($t_p$)</p>
+                                <div class="math-block bg-slate-50 p-4 rounded text-center text-lg">
+                                    $$t_p = \frac{-b}{2a} = \frac{-40}{2(-5)} = \frac{-40}{-10} = 4 \text{ detik}$$
+                                </div>
+                                
+                                <p class="mb-2 font-semibold mt-4">Substitusi $t = 4$ ke persamaan tinggi peluru:</p>
+                                <div class="math-block bg-slate-50 p-4 rounded text-center text-lg">
+                                    $$h(4) = 40(4) - 5(4)^2$$
+                                    $$h(4) = 160 - 5(16)$$
+                                    $$h(4) = 160 - 80 = 80$$
+                                </div>
+                                <div class="mt-4 bg-yellow-50 p-4 rounded text-center font-bold text-lg text-yellow-800 border-l-4 border-yellow-400">
+                                    Ketinggian maksimum yang dicapai peluru adalah 80 meter.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soal 7 -->
+                    <div class="border border-slate-300 rounded-lg overflow-hidden bg-white shadow-sm">
+                        <div class="bg-slate-100 px-6 py-3 border-b border-slate-300 flex justify-between items-center">
+                            <span class="font-bold text-bookBlue font-serif">Soal Latihan 7</span>
+                            <span class="text-xs bg-purple-600 text-white px-2 py-1 rounded">Nilai Fungsi</span>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-lg text-ink mb-4">Diketahui fungsi kuadrat $f(x) = 4 + 2x^2 - 3x$. Tentukan nilai dari operasi $a + b - c$ dari fungsi tersebut!</p>
+                            <button onclick="toggleJawaban('ans7')" class="text-sm font-bold border-2 border-bookAccent text-bookAccent px-4 py-2 rounded hover:bg-bookAccent hover:text-white transition">Lihat Pembahasan</button>
+                            
+                            <div id="ans7" class="hidden mt-6 pt-6 border-t border-dashed border-slate-300">
+                                <p class="mb-2 font-bold text-slate-700">Penyelesaian:</p>
+                                <p class="mb-2">Pertama, urutkan fungsi $f(x)$ ke dalam bentuk baku $ax^2 + bx + c$:</p>
+                                <div class="math-block bg-slate-50 p-4 rounded text-center text-lg mb-4">
+                                    $$f(x) = 2x^2 - 3x + 4$$
+                                </div>
+                                <p class="mb-2">Dari susunan baku di atas, kita dapatkan nilai masing-masing koefisien:</p>
+                                <ul class="list-none bg-slate-50 p-4 rounded font-mono inline-block mb-4">
+                                    <li>$a = 2$</li>
+                                    <li>$b = -3$</li>
+                                    <li>$c = 4$</li>
+                                </ul>
+                                <p class="mb-2">Hitung hasil operasi $a + b - c$:</p>
+                                <div class="math-block bg-slate-50 p-4 rounded text-center text-lg">
+                                    $$(2) + (-3) - (4)$$
+                                    $$-1 - 4 = -5$$
+                                </div>
+                                <p class="font-bold text-bookBlue mt-4">Jadi, hasil akhirnya adalah $-5$.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soal 8 -->
+                    <div class="border border-slate-300 rounded-lg overflow-hidden bg-white shadow-sm">
+                        <div class="bg-slate-100 px-6 py-3 border-b border-slate-300 flex justify-between items-center">
+                            <span class="font-bold text-bookBlue font-serif">Soal Latihan 8</span>
+                            <span class="text-xs bg-bookBlue text-white px-2 py-1 rounded">Sifat Grafik</span>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-lg text-ink mb-4">Sifat dari grafik fungsi kuadrat $f(x) = -2x^2 + 4x - 5$ adalah...</p>
+                            <button onclick="toggleJawaban('ans8')" class="text-sm font-bold border-2 border-bookAccent text-bookAccent px-4 py-2 rounded hover:bg-bookAccent hover:text-white transition">Lihat Pembahasan</button>
+                            
+                            <div id="ans8" class="hidden mt-6 pt-6 border-t border-dashed border-slate-300">
+                                <p class="mb-2 font-bold text-slate-700">Penyelesaian:</p>
+                                <p class="mb-4 text-slate-600">Sifat grafik dipengaruhi oleh dua hal: Nilai $a$ (arah bukaan) dan Nilai $D$ (titik potong sumbu X).</p>
+                                <p class="mb-2 bg-slate-50 p-2 inline-block rounded font-mono">Dari soal: $a = -2, b = 4, c = -5$</p>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                    <div class="bg-red-50 p-4 rounded border border-red-200">
+                                        <p class="font-bold text-red-800 mb-2">1. Cek Nilai a:</p>
+                                        <p>Nilai $a = -2$ (Artinya $a < 0$).</p>
+                                        <p>Maka grafik dipastikan <b>terbuka ke bawah</b>.</p>
+                                    </div>
+                                    <div class="bg-blue-50 p-4 rounded border border-blue-200">
+                                        <p class="font-bold text-bookBlue mb-2">2. Cek Nilai Diskriminan (D):</p>
+                                        <div class="math-block text-sm">
+                                            $$D = b^2 - 4ac$$
+                                            $$D = (4)^2 - 4(-2)(-5)$$
+                                            $$D = 16 - 40 = -24$$
+                                        </div>
+                                        <p>Nilai $D < 0$, artinya grafik <b>tidak memotong sumbu X</b>.</p>
+                                    </div>
+                                </div>
+                                <div class="mt-6 bg-slate-100 p-4 rounded text-center border-l-4 border-slate-800">
+                                    <p class="font-bold">Kesimpulan Gabungan:</p>
+                                    <p>Karena grafik terbuka ke bawah dan tidak menyentuh sumbu X, maka grafik tersebut melayang di bagian bawah sumbu X. Sifat ini disebut <b>Definit Negatif</b> (Grafik selalu berada di bawah sumbu x).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soal 9 -->
+                    <div class="border border-slate-300 rounded-lg overflow-hidden bg-white shadow-sm border-b-4 border-b-bookAccent">
+                        <div class="bg-slate-100 px-6 py-3 border-b border-slate-300 flex justify-between items-center">
+                            <span class="font-bold text-bookBlue font-serif">Soal Latihan 9</span>
+                            <span class="text-xs bg-purple-600 text-white px-2 py-1 rounded">Nilai Fungsi</span>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-lg text-ink mb-4">Diketahui grafik fungsi kuadrat $y = f(x) = -2x^2 + 4x + 2$. Salah satu titik koordinat yang pasti dilalui oleh grafik tersebut jika $x = 0$ dan $x = 1$ berturut-turut adalah...</p>
+                            <button onclick="toggleJawaban('ans9')" class="text-sm font-bold border-2 border-bookAccent text-bookAccent px-4 py-2 rounded hover:bg-bookAccent hover:text-white transition">Lihat Pembahasan</button>
+                            
+                            <div id="ans9" class="hidden mt-6 pt-6 border-t border-dashed border-slate-300">
+                                <p class="mb-2 font-bold text-slate-700">Penyelesaian:</p>
+                                <p class="mb-2 text-slate-600">Untuk mencari titik koordinat $(x, y)$ yang dilalui grafik, cukup substitusikan nilai $x$ yang diminta ke dalam fungsi.</p>
+                                
+                                <div class="bg-slate-50 p-4 rounded mb-4">
+                                    <p class="font-bold text-bookBlue mb-2">Untuk $x = 0$ (Titik potong sumbu Y):</p>
+                                    <div class="math-block">
+                                        $$y = -2(0)^2 + 4(0) + 2$$
+                                        $$y = 0 + 0 + 2 = 2$$
+                                    </div>
+                                    <p>Maka titiknya adalah <b class="bg-yellow-100 px-2 rounded">(0, 2)</b>.</p>
+                                </div>
+
+                                <div class="bg-slate-50 p-4 rounded">
+                                    <p class="font-bold text-bookBlue mb-2">Untuk $x = 1$:</p>
+                                    <div class="math-block">
+                                        $$y = -2(1)^2 + 4(1) + 2$$
+                                        $$y = -2 + 4 + 2 = 4$$
+                                    </div>
+                                    <p>Maka titiknya adalah <b class="bg-yellow-100 px-2 rounded">(1, 4)</b>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- PENUTUP BUKU -->
+            <div class="mt-20 border-t border-slate-300 pt-8 text-center text-slate-500 font-serif">
+                <p>~ Akhir dari Bab ~</p>
+                <p class="text-sm mt-2 font-sans">E-Book Modul Matematika © 2026</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript for interactivity -->
+    <script>
+        // Fungsi untuk toggle (buka/tutup) pembahasan soal
+        function toggleJawaban(id) {
+            const el = document.getElementById(id);
+            const btn = el.previousElementSibling; // Mengambil elemen button di atasnya
+
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                el.classList.add('block');
+                btn.innerHTML = 'Tutup Pembahasan';
+                btn.classList.replace('text-bookAccent', 'text-slate-500');
+                btn.classList.replace('border-bookAccent', 'border-slate-500');
+                btn.classList.replace('hover:bg-bookAccent', 'hover:bg-slate-500');
+                // animasi sederhana
+                el.style.opacity = 0;
+                setTimeout(() => el.style.opacity = 1, 50);
+                el.style.transition = "opacity 0.4s ease-in-out";
+            } else {
+                el.classList.remove('block');
+                el.classList.add('hidden');
+                btn.innerHTML = 'Lihat Pembahasan';
+                btn.classList.replace('text-slate-500', 'text-bookAccent');
+                btn.classList.replace('border-slate-500', 'border-bookAccent');
+                btn.classList.replace('hover:bg-slate-500', 'hover:bg-bookAccent');
+            }
+        }
+    </script>
+</body>
+</html>
